@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+{%block title_block %}<title>Register</title>{% endblock %}
+{% block body_block %}
+<div class="container" style="width:80%">
+    <div class="jumbotron text-center" style="padding-left:80px;padding-right:80px;">
+        {% if registered %}
+            <h3>Thank You for registering</h3>
+            <p>Please<a href="{%url 'base_app:login'%}">Login</a> with your credentials</p>
+        {% else %}
+            <h3 >Please Sign Up Here</h3>
+          
+            <form class = "" action="" method="post">
+                {% csrf_token %}
+                {{ user_form.as_p}}
+                {{ link_form.as_p}}
+                <input type="submit" name="" value="Register" class="btn btn-default">
+           
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

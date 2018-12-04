@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {%block title_block %} {% endblock %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar  navbar-dark bg-dark" style="min-height: 30px; font-family: Andale Mono, monospace;" >
+      <div class="container-fluid">
+        <div class= "navbar-header">
+          <a class="navbar-brand" href="#" style=" padding: 0 15px;height: 30px;line-height: 30px;">BioCrypt</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container " style="width:100%; margin-top: 10px">
+
+      {% block body_block %}
+      {% endblock %}
+
+    </div>
+  
+   
+    <footer class="text-muted text-center" style="font-size: x-small; position: absolute; bottom: 0;width: 100%;">
+        <div class="container">
+          <p>BioCrypt is a &copy; XYZ, Made for the purpose of being presented as 7th Sem minor project DTU</p>
+          <p>New to BioCrypt? <a href="#">Visit the about section</a> or read our <a href="#">getting started guide</a>.</p>
+        </div>
+    </footer>
+  </body>
+</html>

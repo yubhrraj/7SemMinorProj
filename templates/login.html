@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{%block title_block %}<title>BioCrypt Login</title>{% endblock %}
+{% block body_block %}
+<div class="container" style="width:70%">
+    <div class="jumbotron text-center">
+        <h3>Login Here</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="Enter Username">
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" >
+            
+            <input type="Submit" value="Login" class="btn btn-default">
+        
+        </form>
+    </div>
+</div>
+{% endblock %}
