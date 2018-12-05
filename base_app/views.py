@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-
 from django.views.generic import View,TemplateView
 from .forms import UserForm, linkform
-
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login,logout,authenticate
@@ -12,11 +10,6 @@ from django.contrib.auth import login,logout,authenticate
 class IndexView(TemplateView):
     template_name = 'index.html'
 
-# class loginView(TemplateView):
-#     template_name = 'login.html'
-
-# class RegisterView(TemplateView):
-#     template_name = 'register.html'
 
 @login_required
 def user_logout(request):
@@ -25,6 +18,8 @@ def user_logout(request):
 
 def register(request):
     registered = False
+
+    #if registered: generatekey()
 
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
@@ -58,7 +53,7 @@ def userlogin(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('main')
+                return HttpResponseRedirect(reverse('base_app:main'))
             else:
                 return HttpResponse("Account Not active")
         
@@ -71,21 +66,16 @@ def userlogin(request):
         return render(request, 'login.html')
 
 
+@login_required
 def mainpage(request):
+    
     return render(request, 'loggedindex.html')
 
-
+@login_required
 def trainpage(request):
     return render(request, 'trainpage.html')
     
 
-
-
-# class LoggedIndexView(TemplateView):
-#     template_name = 'loggedindex.html'
-
-# class decryptPageView(TemplateView):
-#     template_name = 'decryptpage.html'
-
-# class trainImageView(TemplateView):
-#     template_name = 'train.html'
+@login_required
+def encrypt(request):
+    pass

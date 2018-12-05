@@ -8,11 +8,62 @@
                 <div class="col-lg-12">
                     <h1>Welcome To BioCrypt</h1>
                     <p>Here you are</p>
-                    <a href="{% url 'base_app:login' %}" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="true">Encrypt</a>
-                    <a href="{% url 'base_app:register' %}" class="btn btn-dark btn-sm active" role="button" aria-pressed="true">Decrypt</a>
-                    <a href="{% url 'base_app:train' %}" class="btn btn-light btn-sm active" role="button" aria-pressed="true">Train</a>
+                    <p>If this is your first login, please go to train to set you biometric</p>
+                    <a href="{% url 'base_app:train' %}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true" style="margin-bottom: 5px; margin-top: 5px; width: 120px">Train</a>
+                    <p>To Encrypt, upload file and press Encrypt</p>
+                    <form method="Post" enctype="multipart/form-data" action="{% url 'base_app:encrypt' %}">
+                        {% csrf_token %}
+                        <input type="file" id="file" style="display: none;" name = 'upfile' >
+                        <button onclick="document.getElementById('file').click(); return false;" class="btn btn-outline-primary btn-sm active " style="margin-bottom: 5px; margin-top: 5px; margin-right: 8px; width: 120px">Upload</button>
+                        <input type ='Submit' value="Encrypt"  class="btn btn-outline-primary btn-sm active " style="margin-bottom: 5px; margin-top: 5px; margin-right: 8px; width: 120px">
+                        
+                    </form>
+                    <p>Decrypt File</p>
+                    <a href="{% url 'base_app:register' %}" class="btn btn-dark btn-sm active" role="button" aria-pressed="true" style="margin-bottom: 5px; margin-top: 5px; width: 120px">Decrypt</a>
+                    <br>
+                    
 
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-sm-4">
+                <p style="font-weight: bold;">About us</p>
+                <div style="font-size: 80%;">
+                Face recognition has been employed in various security-related applications such as surveillance, mugshot identi-ﬁcation, e-passport, and access control. Despite its recentadvancements, privacy concern is one of several issues pre-venting its wider deployment. In this paper, we address theprivacy concern for a self-exclusion scenario of face recognition. 
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding-left: 70px;">
+                <p style="font-weight: bold;">How it works?</p>
+                <ul>
+                  <li>
+                    <a href="">Face recognition</a>
+                  </li>
+                  <li>
+                    <a href="">Encryption</a>
+                  </li>
+                  <li>
+                    <a href="">Decryption</a>
+                  </li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <p style="font-weight: bold; text-align: left;">Contacts</p>
+                <ul>
+                  <li>
+                    <a href="">sales@kairos.com</a>
+                  </li>
+                  <li>
+                    <a href="">support@kairos.com</a>
+                  </li>
+                  <li>
+                    <a href="">press@kairos.com</a>
+                  </li>
+                </ul>
             </div>
         </div>
     </div>

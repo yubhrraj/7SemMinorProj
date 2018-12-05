@@ -1,6 +1,4 @@
 from django.contrib import admin
-from .models import AppUser, SecretKey
+from .models import AppUser
 
 admin.site.register(AppUser)
-
-admin.site.register(SecretKey)

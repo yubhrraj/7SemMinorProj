@@ -10,9 +10,16 @@
   <body>
     <nav class="navbar  navbar-dark bg-dark" style="min-height: 30px; font-family: Andale Mono, monospace;" >
       <div class="container-fluid">
-        <div class= "navbar-header">
-          <a class="navbar-brand" href="#" style=" padding: 0 15px;height: 30px;line-height: 30px;">BioCrypt</a>
-        </div>
+        
+          {% if user.is_authenticated %}
+          
+          <li><a class="navbar-brand" href="{% url 'base_app:main' %}" style=" padding: 0 15px;height: 30px;line-height: 30px;">BioCrypt</a></li>
+          <li class="align right"><a href="{% url 'logout'%}" class="navbar-item" style="color:white;">Logout</a></li>
+          
+          {% else %}
+          <a class="navbar-brand" href="{% url 'index' %}" style=" padding: 0 15px;height: 30px;line-height: 30px;">BioCrypt</a>
+          {% endif %}
+        
       </div>
     </nav>
     <div class="container " style="width:100%; margin-top: 10px">
@@ -22,12 +29,14 @@
 
     </div>
   
-   
-    <footer class="text-muted text-center" style="font-size: x-small; position: absolute; bottom: 0;width: 100%;">
+    <br><br>
+    <footer class="text-muted text-center" style="font-size: x-small; position: relative; bottom: 0;width: 100%;">
         <div class="container">
           <p>BioCrypt is a &copy; XYZ, Made for the purpose of being presented as 7th Sem minor project DTU</p>
           <p>New to BioCrypt? <a href="#">Visit the about section</a> or read our <a href="#">getting started guide</a>.</p>
         </div>
     </footer>
+
+
   </body>
 </html>

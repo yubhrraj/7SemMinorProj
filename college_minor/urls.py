@@ -20,5 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^base_app/', include('base_app.urls', namespace='base_app'))
+    url(r'^base_app/', include('base_app.urls', namespace='base_app')),
+    url(r'^logout/$', views.user_logout, name = "logout"),
 ]
