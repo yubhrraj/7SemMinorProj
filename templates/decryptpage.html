@@ -1,5 +1,21 @@
 {% extends "base.html"%}
 {%block title_block %}<title>Decrypt</title>{% endblock %}
 {% block body_block %}
+<div class="jumbotron text-center">
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Upload the file to decrypt</h2>
+                <form method="Post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" id="file" style="display: none;" name = 'document' >
+                    <button onclick="document.getElementById('file').click(); return false;" class="btn btn-outline-primary btn-sm active " style="margin-bottom: 5px; margin-top: 5px; margin-right: 8px; width: 120px">Upload</button>
+                    <input type ='Submit' value="Decrypt"  class="btn btn-outline-primary btn-sm active " style="margin-bottom: 5px; margin-top: 5px; margin-right: 8px; width: 120px">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+                
 
 {% endblock %}

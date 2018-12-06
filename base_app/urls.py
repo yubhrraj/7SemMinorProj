@@ -8,5 +8,9 @@ urlpatterns = [
     url(r'^main/$', views.mainpage, name = 'main'),
     url(r'^login/main/train/$', views.trainpage, name = 'train'),
     url(r'^main/encrypt/$', views.encrypt, name= 'encrypt'),
+    url(r'^main/decryptpage/$', views.decryptpage, name= 'decryptpage'),
+    url(r'^main/testpage/$', views.testpage, name= 'testpage'),
+
+
     
 ]

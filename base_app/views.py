@@ -5,6 +5,13 @@ from .forms import UserForm, linkform
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login,logout,authenticate
+import pyAesCrypt
+from .models import AppUser
+from django.contrib.auth.models import User
+
+
+
+bufferSize = 64 * 1024
 
 
 class IndexView(TemplateView):
@@ -19,19 +26,14 @@ def user_logout(request):
 def register(request):
     registered = False
 
-    #if registered: generatekey()
-
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
-        link_form = linkform(data=request.POST)
+        
 
         if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            linke = link_form.save(commit = False)
-            linke.user = user
-            linke.save()
             registered = True
         else:
             print(user_form.errors)
@@ -75,7 +77,29 @@ def mainpage(request):
 def trainpage(request):
     return render(request, 'trainpage.html')
     
+def testpage(request):
+    return render(request, 'testpage.html')
+
 
 @login_required
 def encrypt(request):
-    pass
+    if request.method=='POST':
+        
+        password = request.user.appuser.key
+        uploaded_file=request.FILES['upfile']
+        # print(uploaded_file.name)
+        pyAesCrypt.encryptFile(uploaded_file.name, "data.txt.aes", password, bufferSize)
+        # pyAesCrypt.decryptFile("data.txt.aes", "dataout.txt", password, bufferSize)
+
+    return HttpResponseRedirect(reverse('base_app:main'))
+        
+        
+def decryptpage(request):
+    if request.method=='POST':
+        password = request.user.appuser.key
+        uploaded_file=request.FILES['document']
+        # print(uploaded_file.name)
+        pyAesCrypt.decryptFile(uploaded_file.name, "dataout.txt", password, bufferSize)
+        return HttpResponseRedirect(reverse('base_app:main'))
+
+    return render(request, 'decryptpage.html')
